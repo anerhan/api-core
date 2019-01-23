@@ -1,0 +1,7 @@
+---
+- :code: 401
+  :label: expired_or_invalid_token
+  :message: Expired or invalid JWT token
+- :code: 401
+  :label: unauthorized
+  :message: Unauthorized
