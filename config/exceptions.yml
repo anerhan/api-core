@@ -1,0 +1,21 @@
+---
+- class: ApiCore::Errors::UnprocessableEntity
+  method: unprocessable_entity_error
+  status: unprocessable_entity
+  code: 422
+- class: ActiveRecord::RecordNotFound
+  message: Record not found
+  status: not_found
+  code: 404
+- class: ActiveRecord::RecordInvalid
+  status: unprocessable_entity
+  method: record_invalid_error
+  code: 422
+- class: ActiveRecord::RecordNotUnique
+  message: Not unique
+  status: unprocessable_entity
+  code: 422
+- class: default
+  method: default_error
+  status: internal_server_error
+  code: 500

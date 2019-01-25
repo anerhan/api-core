@@ -4,6 +4,10 @@ require 'rails/engine'
 require 'action_controller/railtie'
 
 require 'api_core/config'
+
+# INFO: Raises
+require 'api_core/errors/unprocessable_entity'
+require 'api_core/errors/catcher'
 require 'api_core/errors/mapper'
 require 'api_core/jwt'
 require 'api_core/models/user'

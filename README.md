@@ -1,6 +1,7 @@
 # ApiCore
 ## Requirements:
 ```
+ruby ~> 2.6.0
 warden
 jwt
 rails ~> 5.2.2

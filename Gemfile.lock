@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    api-core (0.0.1)
+    api-core (0.0.2)
       i18n
       jwt
       rails (~> 5.2.2)

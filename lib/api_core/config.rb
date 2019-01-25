@@ -33,6 +33,10 @@ module ApiCore
     def errors
       @errors ||= YAML.load_file(File.join(gem_root, 'config/errors.yml'))
     end
+
+    def exceptions
+      @exceptions ||= YAML.load_file(File.join(gem_root, 'config/exceptions.yml')).map(&:with_indifferent_access)
+    end
   end
 
   class << self
