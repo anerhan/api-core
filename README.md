@@ -6,6 +6,10 @@ warden
 jwt
 rails ~> 5.2.2
 i18n
+waterdrop
+ruby-kafka ~> 0.6.8
+elasticsearch-rails
+elasticsearch-model
 ```
 
 ## Installation
@@ -20,23 +24,14 @@ gem 'api-core', github: 'anerhan/api-core', tag: 'v0.0.1'
 
     $ bundle
 
-### Configure
+### Configure on Rails App side
 
-- **Add  to config/initializers/api_core.rb in Your Rails 5.2.2 Application:**
+- **Add to config/initializers/api_core.rb in Your Rails 5.2.2 Application:**
 ```ruby
 # INFO: Configure ApiCore
 ApiCore.configure do |config|
-  config.delivered_at = Time.current
   config.app_name = 'catalog-api'
   config.supported_versions = %w[v1]
-  config.organization = 'UMICO inc.'
-
-  config.jwt_algo = ENV.fetch('JWT_ALGO') { 'HS256' }
-  config.jwt_validation = ENV.fetch('JWT_VALIDATION') { false }
-  config.jwt_secret = ENV.fetch('JWT_SECRET') { nil }
-  config.jwt_public_key = ENV.fetch('JWT_PUBLIC_KEY') { nil }
-  config.jwt_private_key = ENV.fetch('JWT_PRIVATE_KEY') { nil }
-  config.jwt_password = ENV.fetch('JWT_PASSWORD') { nil }
 end
 
 Rails.application.configure do
@@ -75,6 +70,17 @@ class ImportsController < ApplicationController
     render json: { imports: [] }
   end
 end
+```
+
+### Use EventBus for produce events to Kafka
+- **Async broadcast event:**
+```ruby
+ApiCore::EventBus::Client.async_broadcast(payload, topic: 'streaming.customer')
+```
+
+- **Sync broadcast event:**
+```ruby
+ApiCore::EventBus::Client.broadcast(payload, , topic: 'streaming.customer')
 ```
 
 ### Default root path return API Info:

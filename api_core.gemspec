@@ -35,11 +35,16 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = %w[lib]
 
-
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'pry-rails'
   spec.add_dependency 'warden'
   spec.add_dependency 'jwt'
   spec.add_dependency 'rails', '~> 5.2.2'
   spec.add_dependency 'i18n'
+  spec.add_dependency 'waterdrop'
+  spec.add_dependency 'ruby-kafka', '~> 0.6.8'
+  spec.add_dependency 'elasticsearch-rails'
+  spec.add_dependency 'elasticsearch-model'
 end
