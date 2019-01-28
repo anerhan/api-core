@@ -17,10 +17,12 @@ module ApiCore
           success!(
             ApiCore::Models::User.new(
               id: decoded_jwt_token['sub'],
-              first_name: 'John',
-              last_name: 'Doe',
-              role: 'admin',
-              email: 'admin@umico.com'
+              given_name: decoded_jwt_token['given_name'],
+              family_name: decoded_jwt_token['family_name'],
+              email_verified: decoded_jwt_token['email_verified'],
+              realm_access: decoded_jwt_token['realm_access'],
+              resource_access: decoded_jwt_token['resource_access'],
+              jti: decoded_jwt_token['jti']
             )
           )
         end

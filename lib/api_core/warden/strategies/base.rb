@@ -3,7 +3,7 @@ module ApiCore
     module Strategies
       class Base < ::Warden::Strategies::Base
         def jwt_token
-          request.env['HTTP_AUTHORIZATION']
+          request.env['HTTP_AUTHORIZATION'].try(:sub, /\ABearer\s/, '')
         end
       end
     end
